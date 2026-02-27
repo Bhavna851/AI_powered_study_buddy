@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Study Buddy</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>📘 AI Powered Study Buddy</h1>
+    <p>Paste your notes or upload a PDF</p>
+
+    <form method="POST" enctype="multipart/form-data">
+        <textarea name="text" placeholder="Paste text here..."></textarea>
+
+        <input type="file" name="pdf">
+
+        <div class="buttons">
+            <button name="action" value="summary">Summarize</button>
+            <button name="action" value="notes">Short Notes</button>
+            <button name="action" value="quiz">Quiz</button>
+        </div>
+    </form>
+
+    {% if output %}
+    <div class="output">
+        <h3>Result:</h3>
+        <pre>{{ output }}</pre>
+    </div>
+    {% endif %}
+</div>
+
+</body>
+</html>
