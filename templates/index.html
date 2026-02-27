@@ -3,31 +3,37 @@
 <head>
     <title>AI Study Buddy</title>
     <link rel="stylesheet" href="/static/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 
 <div class="container">
-    <h1>📘 AI Powered Study Buddy</h1>
-    <p>Paste your notes or upload a PDF</p>
+    <div class="card">
+        <h1>📘 AI Powered Study Buddy</h1>
+        <p class="subtitle">Paste your notes or upload a PDF to generate smart outputs</p>
 
-    <form method="POST" enctype="multipart/form-data">
-        <textarea name="text" placeholder="Paste text here..."></textarea>
+        <form method="POST" enctype="multipart/form-data">
+            <textarea name="text" placeholder="Paste your text here..."></textarea>
 
-        <input type="file" name="pdf">
+            <label class="file-upload">
+                📂 Choose PDF
+                <input type="file" name="pdf">
+            </label>
 
-        <div class="buttons">
-            <button name="action" value="summary">Summarize</button>
-            <button name="action" value="notes">Short Notes</button>
-            <button name="action" value="quiz">Quiz</button>
+            <div class="buttons">
+                <button class="btn summary" name="action" value="summary">Summarize</button>
+                <button class="btn notes" name="action" value="notes">Short Notes</button>
+                <button class="btn quiz" name="action" value="quiz">Quiz</button>
+            </div>
+        </form>
+
+        {% if output %}
+        <div class="output">
+            <h3>📌 Result:</h3>
+            <pre>{{ output }}</pre>
         </div>
-    </form>
-
-    {% if output %}
-    <div class="output">
-        <h3>Result:</h3>
-        <pre>{{ output }}</pre>
+        {% endif %}
     </div>
-    {% endif %}
 </div>
 
 </body>
